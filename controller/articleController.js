@@ -7,7 +7,7 @@ const articles = [
     {
         id: 2, 
         title: 'Youtube Videos', 
-        body: ''
+        body: 'rgkdflkgjdf'
     }
 ]
 const getSingelId = (req,res) => {
