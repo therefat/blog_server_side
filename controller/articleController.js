@@ -11,6 +11,9 @@ const createArticle = async (req,res) => {
      })
     } catch(error){
      console.log('Error Occorue' + error)
+     return res.json({
+        error : error.message
+     })
     }
  }
 const getSingelId = async (req,res) => {
