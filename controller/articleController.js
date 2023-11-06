@@ -1,10 +1,10 @@
 const Article = require('../model/Article')
 
 const createArticle = async (req,res) => {
-    const  {title,body,image,isPublished} = req.body;
+    const  {title,body,image,isPublished,password,confirmPassword} = req.body;
     
     try{
-     const article = new Article({title,body,image,isPublished})
+     const article = new Article({title,body,image,isPublished,password,confirmPassword})
      await article.save()
      return res.status(201).json({
          message: "Article Created succesfuly"

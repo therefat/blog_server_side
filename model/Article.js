@@ -15,6 +15,21 @@ const articleSchema = new mongoose.Schema({
     isPublished: {
         type: Boolean,
         default: true,
+    },
+    password : {
+        type : String,
+        
+    },
+    confirmPassword: {
+        type: String,
+        validate : [
+            function (value)  {
+                 if(password != confirmPassword){
+                    return false
+                 }
+             },
+             "Password  does't match"
+         ]
     }
 },{
     timestamps: true
