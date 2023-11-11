@@ -1,7 +1,9 @@
 const Article = require('../model/Article')
 
 const createArticle = async (req,res) => {
-    const  {title,body,image,isPublished,password,confirmPassword} = req.body;
+    
+    const image = req.file.filename
+    const  {title,body,isPublished,password,confirmPassword} = req.body;
     
     try{
      const article = new Article({title,body,image,isPublished,password,confirmPassword})

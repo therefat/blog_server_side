@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const articleRoutes = require('./routes/article')
 const app = express()
 app.use(express.json())
+app.use(express.urlencoded({extended : false}))
 app.use('/article',articleRoutes)
 app.get('/',(req,res) => {
     res.json({
