@@ -1,10 +1,12 @@
+const path = require('path')
 const Article = require('../model/Article')
 
 const createArticle = async (req,res) => {
     
-    const image = req.file.filename
+    const images = req.file.filename
     const  {title,body,isPublished,password,confirmPassword} = req.body;
-    
+    const parentPath = path.dirname(__dirname)
+    const image = path.join(parentPath,'uploads',images)
     try{
      const article = new Article({title,body,image,isPublished,password,confirmPassword})
      await article.save()
