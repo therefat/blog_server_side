@@ -1,10 +1,21 @@
 const path = require('path')
-const Article = require('../model/Article')
+const Article = require('../model/Article');
+const ErrorHandler = require('../utills/ErrorHandler');
 
-const createArticle = async (req,res) => {
-    
-    const images = req.file.filename
+const createArticle = async (req,res,next) => {
     const  {title,body,isPublished,password,confirmPassword} = req.body;
+    console.log(title)
+    if(!title){
+        return next(ErrorHandler.validationError('Title is required'))
+    }
+    
+        // return next(ErrorHandler.serverError())
+    
+    if(!req.file){
+      return next(ErrorHandler.validationError('Image is required'))
+    }
+    const images = req.file.filename
+    
     const parentPath = path.dirname(__dirname)
     const image = path.join(parentPath,'uploads',images)
     try{
